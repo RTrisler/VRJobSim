@@ -11,7 +11,7 @@ public class ReplacementTireManager : MonoBehaviour
     Transform LeftTirePlacementTransform;
     [SerializeField]
     Transform RightTirePlacementTransform;
-    int TotalNumberOfNuts = 8;
+    int TotalNumberOfNuts = 5;
     bool IsFastened = false;
     XRGrabInteractable TireGrabbable;
     Rigidbody TireRigidbody;

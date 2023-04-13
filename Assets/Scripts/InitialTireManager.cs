@@ -8,7 +8,7 @@ public class InitialTireManager : MonoBehaviour
     public int CurrentNumberOfNuts;
     public Vector3 PlacementPosition;
 
-    int TotalNumberOfNuts = 8;
+    int TotalNumberOfNuts = 5;
     XRGrabInteractable TireGrabbable;
     Rigidbody TireRigidbody;
 
