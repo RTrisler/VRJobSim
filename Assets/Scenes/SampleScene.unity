@@ -2904,6 +2904,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070430785}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1089889085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1512749751259695214, guid: 44781c667fd04134b878fd325c8679fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 6471708483087438051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110239247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4854,7 +4860,7 @@ MonoBehaviour:
   m_SmoothMovement: 0
   m_FollowTightness: 10
   m_SnapThresholdDistance: 10
-  m_Reticle: {fileID: 0}
+  m_Reticle: {fileID: 1089889085}
   m_BlockedReticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
   m_StopLineAtSelection: 0
@@ -6620,7 +6626,7 @@ MonoBehaviour:
   m_SmoothMovement: 0
   m_FollowTightness: 10
   m_SnapThresholdDistance: 10
-  m_Reticle: {fileID: 0}
+  m_Reticle: {fileID: 1089889085}
   m_BlockedReticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
   m_StopLineAtSelection: 0
@@ -7580,6 +7586,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0c634d43759f96547a2894e2744199f1, type: 2}
+    - target: {fileID: 4448271124799486810, guid: 44781c667fd04134b878fd325c8679fa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476229197052042237, guid: 44781c667fd04134b878fd325c8679fa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4488206762793573096, guid: 44781c667fd04134b878fd325c8679fa,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
