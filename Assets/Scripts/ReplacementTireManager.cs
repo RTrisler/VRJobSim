@@ -36,6 +36,7 @@ public class ReplacementTireManager : MonoBehaviour
         // Affix tire to spoke
         if (collider.gameObject.tag == "Spoke")
         {
+            Debug.Log(gameObject.name + " came into contact with " + collider.gameObject.name);
             TireGrabbable.enabled = false;
             // Set tire transform centered on the spoke, disable gravity, enable isKinematic
             TireRigidbody.useGravity = false;
@@ -60,5 +61,11 @@ public class ReplacementTireManager : MonoBehaviour
             IsFastened = true;
             Debug.Log("Tire '" + gameObject.name + "' is fastened");
         }
+    }
+
+    public void PickUpReplacementTire()
+    {
+        // freeze shit / fuck w position/ whatever
+        Debug.Log("Replacement tire picked up");
     }
 }

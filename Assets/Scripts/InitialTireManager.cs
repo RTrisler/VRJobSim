@@ -18,12 +18,17 @@ public class InitialTireManager : MonoBehaviour
         TireGrabbable = GetComponent<XRGrabInteractable>();
         TireRigidbody = GetComponent<Rigidbody>();
         PlacementPosition = GetComponent<Transform>().position;
+        // Set initial state
+        /*TireGrabbable.enabled = false;
+        TireRigidbody.isKinematic = true;
+        TireRigidbody.useGravity = false;*/
     }
 
     void Update()
     {
         if (CurrentNumberOfNuts == 0)
         {
+            Debug.Log("NUTS DRAINED");
             TireGrabbable.enabled = true;
             TireRigidbody.isKinematic = false;
             TireRigidbody.useGravity = true;
