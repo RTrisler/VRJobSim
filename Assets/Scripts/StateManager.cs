@@ -27,9 +27,10 @@ public class StateManager : MonoBehaviour
         Step3,
         Step4,
         Step5,
-        Step6
+        Step6,
+        ERROR
     }
-    StepState CurrentState;
+    public StepState CurrentState;
 
     // state variables
     public bool IsOnPlatform = false;
