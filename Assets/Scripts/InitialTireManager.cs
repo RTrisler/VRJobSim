@@ -28,6 +28,7 @@ public class InitialTireManager : MonoBehaviour
     {
         if (CurrentNumberOfNuts == 0)
         {
+            
             Debug.Log("NUTS DRAINED");
             TireGrabbable.enabled = true;
             TireRigidbody.isKinematic = false;
