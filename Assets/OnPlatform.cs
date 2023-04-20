@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OnPlatform : MonoBehaviour
 {
+
+    public StateManager sm;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,9 @@ public class OnPlatform : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        Debug.Log("Player is on the platform");
+        if (collider.name == "color_1")
+        {
+            sm.ApproachedPlatform();
+        }
     }
 }

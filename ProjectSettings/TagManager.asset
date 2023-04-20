@@ -21,8 +21,8 @@ TagManager:
   - RightHandPhysics
   - LeftHandPhysics
   - Trigger
-  - 
-  - 
+  - WrenchLayer
+  - Platform
   - 
   - Post Processing
   - 

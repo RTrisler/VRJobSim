@@ -20,6 +20,10 @@ public class ReplacementTireManager : MonoBehaviour
     Vector3 RightTirePlacementPosition;
     Quaternion RightTirePlacementRotation;
 
+    StateManager StateManager;
+
+
+
     void Start()
     {
         CurrentNumberOfNutsFastened = 0;
@@ -29,6 +33,8 @@ public class ReplacementTireManager : MonoBehaviour
         LeftTirePlacementRotation = LeftTirePlacementTransform.rotation;
         RightTirePlacementPosition = RightTirePlacementTransform.position;
         RightTirePlacementRotation = RightTirePlacementTransform.rotation;
+
+        StateManager = GameObject.Find("StateController").GetComponent<StateManager>();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -45,11 +51,13 @@ public class ReplacementTireManager : MonoBehaviour
             {
                 gameObject.transform.position = LeftTirePlacementPosition;
                 gameObject.transform.rotation = LeftTirePlacementRotation;
+                StateManager.IsAffixedToSpoke = true;
             }
             else if (collider.gameObject.name == "SpokeRight")
             {
                 gameObject.transform.position = RightTirePlacementPosition;
                 gameObject.transform.rotation = RightTirePlacementRotation;
+                StateManager.IsAffixedToSpoke = true;
             }
         }
     }
@@ -59,6 +67,7 @@ public class ReplacementTireManager : MonoBehaviour
         if (CurrentNumberOfNutsFastened == TotalNumberOfNuts)
         {
             IsFastened = true;
+            StateManager.IsFastened = true;
             Debug.Log("Tire '" + gameObject.name + "' is fastened");
         }
     }

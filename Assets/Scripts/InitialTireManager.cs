@@ -12,12 +12,18 @@ public class InitialTireManager : MonoBehaviour
     XRGrabInteractable TireGrabbable;
     Rigidbody TireRigidbody;
 
+    StateManager StateManager;
+
+
+
     void Start()
     {
         CurrentNumberOfNuts = TotalNumberOfNuts;
         TireGrabbable = GetComponent<XRGrabInteractable>();
         TireRigidbody = GetComponent<Rigidbody>();
         PlacementPosition = GetComponent<Transform>().position;
+
+        StateManager = GameObject.Find("StateController").GetComponent<StateManager>();
         // Set initial state
         /*TireGrabbable.enabled = false;
         TireRigidbody.isKinematic = true;
@@ -28,7 +34,10 @@ public class InitialTireManager : MonoBehaviour
     {
         if (CurrentNumberOfNuts == 0)
         {
-            
+            if (gameObject.tag == "TireLeft")
+            {
+                StateManager.IsTireLeftDrained = true;
+            }
             Debug.Log("NUTS DRAINED");
             TireGrabbable.enabled = true;
             TireRigidbody.isKinematic = false;

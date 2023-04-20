@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+
     // References to initial tire game objects
     GameObject TireLeft_Initial;
     GameObject TireRight_Initial;
@@ -20,8 +21,21 @@ public class StateManager : MonoBehaviour
     ReplacementTireManager ReplacementTire2_Manager;
     UIManager UIManager;
 
+    public enum StepState {
+        Step1,
+        Step2,
+        Step3,
+        Step4,
+        Step5,
+        Step6
+    }
+    StepState CurrentState;
+
     // state variables
     public bool IsOnPlatform = false;
+    public bool IsAffixedToSpoke = false;
+    public bool IsTireLeftDrained = false;
+    public bool IsFastened = false;
 
     void Start()
     {
@@ -38,18 +52,51 @@ public class StateManager : MonoBehaviour
         TireRight_Manager = TireRight_Initial.GetComponent<InitialTireManager>();
         ReplacementTire1_Manager = ReplacementTire_1.GetComponent<ReplacementTireManager>();
         ReplacementTire2_Manager = ReplacementTire_2.GetComponent<ReplacementTireManager>();
+        CurrentState = StepState.Step1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if no nuts removed and player steps on platform TODOTODOTODO
-        if (TireLeft_Manager.CurrentNumberOfNuts == 5 )
+        // if you are on platform
+        if (IsOnPlatform == true)
         {
-            UIManager.Step1Off();
-            UIManager.Step2On();
+            // if no nuts removed and player steps on platform TODOTODOTODO
+            // Approach with wrench -> remove nuts from tire
+            if (TireLeft_Manager.CurrentNumberOfNuts == 5 && CurrentState == StepState.Step1)// && TireRight_Manager.CurrentNumberOfNuts != 0)
+            {
+                UIManager.Step1Off();
+                UIManager.Step2On();
+                CurrentState = StepState.Step2;
+            }
         }
+
+        // Remove nuts from tire -> put replacement on
+        if (IsTireLeftDrained && CurrentState == StepState.Step2)
+        {
+            Debug.Log("HIT STEP2->STEP3 CONDITIONAL");
+            UIManager.Step2Off();
+            UIManager.Step3On();
+            CurrentState = StepState.Step3;
+        }
+
+        if (IsAffixedToSpoke && CurrentState == StepState.Step3)
+        {
+            UIManager.Step3Off();
+            UIManager.Step4On();
+            CurrentState = StepState.Step4;
+        }
+
+        if (IsFastened && CurrentState == StepState.Step4)
+        {
+            UIManager.Step4Off();
+            UIManager.Step5On();
+            CurrentState = StepState.Step5;
+        }
+        Debug.Log("Current state: " + CurrentState);
     }
+
+
 
     public void ApproachedPlatform()
     {

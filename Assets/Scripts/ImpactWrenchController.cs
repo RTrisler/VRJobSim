@@ -10,12 +10,29 @@ public class ImpactWrenchController : MonoBehaviour
     public ReplacementTireManager ReplacementTire_1;
     public ReplacementTireManager ReplacementTire_2;
 
+    public Quaternion WrenchRotation;
+    public Transform Hand;
+
     bool IsInContactWithNut = false;
     GameObject CurrentNut;
 
+    bool IsGrabbed;
+
     void Start()
     {
+        IsGrabbed = false;
     }
+
+    void Update()
+    {
+        if (IsGrabbed)
+        {
+            gameObject.transform.rotation = WrenchRotation;
+            gameObject.transform.position = new Vector3(Hand.position.x, Hand.position.y + 0.1f, Hand.position.z + 0.2f);
+        }
+    }
+
+
 
     void OnTriggerEnter(Collider collider)
     {
@@ -37,6 +54,8 @@ public class ImpactWrenchController : MonoBehaviour
     // Use impact wrench by pressing trigger while holding impact wrench
     public void EngageImpactWrench()
     {
+        Debug.Log("Trigger Clicked");
+        Debug.Log(IsInContactWithNut);
         if (IsInContactWithNut)
         {
             if (IsInitialTire())
@@ -49,6 +68,20 @@ public class ImpactWrenchController : MonoBehaviour
             }
         }
     }
+
+    // Use impact wrench by pressing trigger while holding impact wrench
+    public void GrabWrench()
+    {
+        Debug.Log("Wrench Grabbed");
+        IsGrabbed = true;
+    }
+
+    public void DropWrench()
+    {
+        Debug.Log("Wrench dropped");
+        IsGrabbed = false;
+    }
+
 
     // Disengage impact wrench by releasing trigger - probably don't need
     public void DisengageImpactWrench()
